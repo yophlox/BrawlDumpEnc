@@ -1,12 +1,9 @@
-# BrawlDumpEnc
+# BrawlDumpEnc - Quality of Life Patches Branch
 
-* A decompilation of the Brawlhalla Dumper and Encrypter by Wiezerzz.
-
-* Original DL: https://www.unknowncheats.me/forum/downloads.php?do=file&id=38388
-
+* Just me making lil patches that I like lol
 
 # Credits
 
-YoPhlox (me!) - Decompilation :D
+YoPhlox (me!) - Decompilation & Patches :D
 
 Wiezerzz - Original Tool
