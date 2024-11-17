@@ -12,9 +12,11 @@ namespace BrawlhallaDumper
 			uint globalKey;
 			if (uint.TryParse(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "key.txt")).Trim(), out globalKey))
 			{
-				Directory.CreateDirectory("Dump");
 				foreach (string text in args)
 				{
+					string folderName = Path.GetFileNameWithoutExtension(text);
+					Directory.CreateDirectory(folderName);
+
 					using (FileStream fileStream = File.OpenRead(text))
 					{
 						Console.Write(text);
@@ -44,7 +46,7 @@ namespace BrawlhallaDumper
 							{
 								path = text2.Substring(0, text2.IndexOf('\n')) + ".csv";
 							}
-							File.WriteAllText(Path.Combine("Dump", path), array[j]);
+							File.WriteAllText(Path.Combine(folderName, path), array[j]);
 						}
 					}
 				}
