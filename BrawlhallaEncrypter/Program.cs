@@ -26,10 +26,10 @@ namespace BrawlhallaDumper
 				return;
 			}
 
-			Console.Write("Please give the seed: ");
 			uint seed;
 			uint globalKey;
-			if (uint.TryParse(Console.ReadLine(), out seed) && uint.TryParse(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "key.txt")).Trim(), out globalKey))
+			if (uint.TryParse(File.ReadAllText("seed.txt").Trim(), out seed) && 
+				uint.TryParse(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "key.txt")).Trim(), out globalKey))
 			{
 				Directory.CreateDirectory("Encrypt");
 				string folderName = new DirectoryInfo(dumpPath).Name;

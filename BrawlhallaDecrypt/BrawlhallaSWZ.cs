@@ -122,7 +122,7 @@ namespace BrawlhallaDumper
 		}
 
 		// Token: 0x06000006 RID: 6 RVA: 0x00002310 File Offset: 0x00000510
-		private static uint ReadUInt32BE(Stream stream)
+		public static uint ReadUInt32BE(Stream stream)
 		{
 			byte[] array = new byte[4];
 			stream.Read(array, 0, 4);

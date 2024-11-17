@@ -20,6 +20,10 @@ namespace BrawlhallaDumper
 					using (FileStream fileStream = File.OpenRead(text))
 					{
 						Console.Write(text);
+						uint seed = BrawlhallaSWZ.ReadUInt32BE(fileStream);
+						fileStream.Position = 0;
+						File.WriteAllText("seed.txt", seed.ToString());
+
 						string[] array = BrawlhallaSWZ.Decrypt(fileStream, globalKey);
 						for (int j = 0; j < array.Length; j++)
 						{
