@@ -16,9 +16,17 @@ namespace BrawlhallaDumper
 			uint globalKey;
 			if (uint.TryParse(Console.ReadLine(), out seed) && uint.TryParse(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "key.txt")).Trim(), out globalKey))
 			{
+				string dumpPath = "Dump";
+				if (!Directory.Exists(dumpPath))
+				{
+					Console.WriteLine("Error: 'Dump' folder not found!");
+					Console.ReadLine();
+					return;
+				}
+
 				Directory.CreateDirectory("Encrypt");
-				string[] stringEntries = (from x in args
-				select File.ReadAllText(x, Encoding.UTF8)).ToArray<string>();
+				string[] files = Directory.GetFiles(dumpPath);
+				string[] stringEntries = files.Select(x => File.ReadAllText(x, Encoding.UTF8)).ToArray();
 				byte[] bytes = BrawlhallaSWZ.Encrypt(seed, globalKey, stringEntries);
 				File.WriteAllBytes(Path.Combine("Encrypt", "Encrypted.swz"), bytes);
 				Console.WriteLine();
